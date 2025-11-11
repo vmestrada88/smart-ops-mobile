@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
+import { useRouter } from 'expo-router';
 import Services from '../components/Services';
 import ContactModal from '../components/ContactModal';
 
@@ -36,6 +37,7 @@ import ContactModal from '../components/ContactModal';
  */
 export default function HomeScreen() {
   const [modalOpen, setModalOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <ScrollView style={styles.container}>
@@ -48,12 +50,20 @@ export default function HomeScreen() {
         <Text style={styles.description}>
           We provide reliable, intelligent low-voltage and smart security solutions for modern homes and businesses.
         </Text>
-        <TouchableOpacity
-          style={styles.contactButton}
-          onPress={() => setModalOpen(true)}
-        >
-          <Text style={styles.contactButtonText}>Contact Us</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.contactButton}
+            onPress={() => setModalOpen(true)}
+          >
+            <Text style={styles.contactButtonText}>Contact Us</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.productsButton}
+            onPress={() => router.push('/products')}
+          >
+            <Text style={styles.productsButtonText}>View Products</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <Services />
@@ -107,6 +117,11 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     marginBottom: 32,
   },
+  buttonContainer: {
+    width: '100%',
+    maxWidth: 350,
+    gap: 12,
+  },
   contactButton: {
     backgroundColor: '#14b8a6',
     paddingVertical: 16,
@@ -123,6 +138,28 @@ const styles = StyleSheet.create({
   },
   contactButtonText: {
     color: '#ffffff',
+    fontSize: 18,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  productsButton: {
+    backgroundColor: '#ffffff',
+    paddingVertical: 16,
+    paddingHorizontal: 32,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: '#14b8a6',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  productsButtonText: {
+    color: '#14b8a6',
     fontSize: 18,
     fontWeight: '600',
     textAlign: 'center',
