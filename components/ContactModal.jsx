@@ -8,7 +8,7 @@ export default function ContactModal({ isOpen, onClose }) {
   };
 
   const handleEmailPress = () => {
-    Linking.openURL('mailto:sales@smartsolutionfl.com');
+    Linking.openURL('mailto:info@smartsolutionfl.com');
   };
 
   return (
@@ -46,7 +46,7 @@ export default function ContactModal({ isOpen, onClose }) {
               onPress={handleEmailPress}
             >
               <Ionicons name="mail" size={20} color="#14b8a6" />
-              <Text style={styles.contactText}>sales@smartsolutionfl.com</Text>
+              <Text style={styles.contactText}>info@smartsolutionfl.com</Text>
             </TouchableOpacity>
           </View>
         </View>
